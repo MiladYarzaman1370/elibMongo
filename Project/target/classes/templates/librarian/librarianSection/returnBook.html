@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>returnBook</title>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>my issuse books</h2>
+
+<table >
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>auther</th>
+        <th>issuseBook</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${empty}">
+        <td colspan="2"> No books Available </td>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td><span th:text="${book.name}"> name </span></td>
+        <td><span th:text="${book.auther}"> Auther </span></td>
+
+
+        <td>
+            <form th:action="@{/librarianSection/returnb}" method="post">
+                <input type="hidden" name="id" th:value="${book.id}" />
+                <input type="hidden" name="librarianId" th:value="${librarianId}" />
+                <input type="submit" value="returnBook" class="btn btn-danger" />
+            </form>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

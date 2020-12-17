@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>addLibrarian</title>
+</head>
+<body>
+<form action="#" th:action="@{/adminSection/addLibrarian/register}" th:object="${librarianData}" method="post">
+    <label>
+        name:
+        <input type="text" th:field="*{name}" ><br><br>
+    </label>
+    <label>
+        mobileNumber:
+        <input  type="text" th:field="*{mobileNumber}" ><br><br>
+    </label>
+    <label>
+        email:
+        <input type="text" th:field="*{email}"  id="email" name="email"><br><br>
+    </label>
+    <label>
+        password:
+        <input  type="text" th:field="*{password}"  id="password" name="password"><br><br>
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

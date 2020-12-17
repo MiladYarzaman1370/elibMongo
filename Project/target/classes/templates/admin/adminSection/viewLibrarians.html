@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>viewLibrarians</title>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Librarian List</h2>
+
+
+
+<table >
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>mobileNumber</th>
+        <th>email</th>
+        <th>password</th>
+        <th>delete</th>
+        <th>issuseBooks</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${librarians.empty}">
+        <td colspan="2"> No Librarian Available </td>
+    </tr>
+    <tr th:each="librarian : ${librarians}">
+        <td><span th:text="${librarian.name}" th:field="*{name}" > Title </span></td>
+        <td><span th:text="${librarian.mobileNumber}"> Author </span></td>
+
+        <td><span th:text="${librarian.email}"> Email </span></td>
+        <td><span th:text="${librarian.password}"> Password </span></td>
+        <td>
+            <form th:action="@{/adminSection/deleteLibrarian}" method="post">
+                <input type="hidden" name="id" th:value="${librarian.id}" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </td>
+        <td>
+
+            <form th:action="@{/adminSection/LibrarianIssuseBooks}" method="post">
+                <input type="hidden" name="id" th:value="${librarian.id}" />
+                <input type="submit" value="seeBooks" class="btn btn-danger" />
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LibrarianIssuseBooks</title>
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<h1 th:text="${librarianName}"></h1>
+<h2 >book List</h2>
+
+<table >
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>auther</th>
+        <th>publisher</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${empty}">
+        <td colspan="2"> No books Available </td>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td><span th:text="${book.name}"> name </span></td>
+        <td><span th:text="${book.auther}"> Auther </span></td>
+        <td><span th:text="${book.publisher}"> Auther </span></td>
+
+
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

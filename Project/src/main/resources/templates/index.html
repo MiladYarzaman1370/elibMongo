@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org" >
+<head>
+
+    <meta charset="UTF-8">
+    <title>login page</title>
+</head>
+<body>
+
+<h1>Admin</h1>
+<h4>adminEmail: iran@chmail.ir</h4>
+<h4>adminPassword: 1111</h4>
+<form action="#" th:action="@{/adminSection}" th:object="${loginData}" method="post">
+    <label>
+    email:
+    <input type="text" th:field="*{email}"  id="email" name="email"><br><br>
+    </label>
+    <label>
+    password:
+    <input  type="text" th:field="*{password}"  id="password" name="password"><br><br>
+    </label>
+    <input type="submit" value="Submit">
+</form>
+<h1>Librarian</h1>
+<form action="#" th:action="@{/librarianSection}" th:object="${loginData}" method="post">
+    <label>
+        email:
+        <input type="text" th:field="*{email}"  id="librarianEmail"><br><br>
+    </label>
+    <label>
+        password:
+        <input  type="text" th:field="*{password}"  id="librarianpassword" ><br><br>
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+</body>
+</html>
